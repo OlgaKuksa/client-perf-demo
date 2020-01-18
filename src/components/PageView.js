@@ -1,18 +1,19 @@
 import React from "react";
 import SourceSelector from "./SourceSelector";
+import Filter from "./Filter";
 
 class PageView extends React.Component {
   constructor() {
     super();
-    this.state = { selectedComponentId: "fast"};
+    this.state = { selectedComponentId: "fast" };
   }
 
   render() {
     return (
       <div>
-        <SourceSelector/>
+        <SourceSelector />
         <div id="component-selector"></div>
-        <div>filter stub</div>
+        <Filter />
         <div>grid stub</div>
       </div>
     );
