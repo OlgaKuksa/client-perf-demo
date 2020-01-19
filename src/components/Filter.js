@@ -15,6 +15,8 @@ class Filter extends React.Component {
   render() {
     return (
       <input
+        className="filter-input"
+        type="text"
         value={this.state.value}
         onChange={this.onValueChange}
         placeholder="Enter text to filter by"

@@ -13,7 +13,7 @@ class SourceSelector extends React.Component {
 
   render() {
     return (
-      <div id="source-selector">
+      <span className="source-selector">
         Issues from:
         <select
           name="data-source"
@@ -24,7 +24,7 @@ class SourceSelector extends React.Component {
           <option value="enzyme">Enzyme repo</option>
           <option value="jest">Jest repo</option>
         </select>
-      </div>
+      </span>
     );
   }
 }

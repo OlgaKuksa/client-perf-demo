@@ -5,8 +5,6 @@ import BugTable from "./BugTable";
 
 import results from "../api/sampleIssues.json";
 
-import "./PageView.css";
-
 class PageView extends React.Component {
   constructor() {
     super();
@@ -20,8 +18,12 @@ class PageView extends React.Component {
   render() {
     return (
       <div>
+        <div className='filter-box'>
+        <Filter />
         <SourceSelector />
-        <div>
+        </div>
+        <div className='component-line'>
+        <span>
           <span
             onClick={this.makeComponentActive}
             id="slow"
@@ -32,7 +34,7 @@ class PageView extends React.Component {
                 : "inactive")
             }
           >
-            Slow component
+            Slow
           </span>
           <span
             onClick={this.makeComponentActive}
@@ -44,12 +46,11 @@ class PageView extends React.Component {
                 : "inactive")
             }
           >
-            Fast Component
+            Fast
           </span>
+        </span>
         </div>
-
-        <Filter />
-       <BugTable results={results}/>
+        <BugTable results={results} />
       </div>
     );
   }
