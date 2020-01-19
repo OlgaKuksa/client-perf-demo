@@ -1,6 +1,9 @@
 import React from "react";
 import SourceSelector from "./SourceSelector";
 import Filter from "./Filter";
+import BugTable from "./BugTable";
+
+import results from "../api/sampleIssues.json";
 
 import "./PageView.css";
 
@@ -44,8 +47,9 @@ class PageView extends React.Component {
             Fast Component
           </span>
         </div>
+
         <Filter />
-        <div>grid stub</div>
+       <BugTable results={results}/>
       </div>
     );
   }
