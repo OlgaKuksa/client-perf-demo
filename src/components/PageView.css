@@ -1,0 +1,13 @@
+.component-box {
+  margin: 10px 20px 10px 20px;
+  cursor: pointer;
+}
+
+.active {
+  color: red;
+  text-decoration: underline;
+}
+
+.inactive {
+  color: green;
+}
