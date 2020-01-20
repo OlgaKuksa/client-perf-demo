@@ -1,9 +1,7 @@
 import React from "react";
 import SourceSelector from "./SourceSelector";
 import Filter from "./Filter";
-import BugTable from "./BugTable";
-
-import results from "../api/sampleIssues.json";
+import Slow from "./Slow";
 
 class PageView extends React.Component {
   constructor() {
@@ -18,39 +16,43 @@ class PageView extends React.Component {
   render() {
     return (
       <div>
-        <div className='filter-box'>
-        <Filter />
-        <SourceSelector />
+        <div className="filter-box">
+          <Filter />
+          <SourceSelector />
         </div>
-        <div className='component-line'>
-        <span>
-          <span
-            onClick={this.makeComponentActive}
-            id="slow"
-            className={
-              "component-box " +
-              (this.state.selectedComponentId === "slow"
-                ? "active"
-                : "inactive")
-            }
-          >
-            Slow
+        <div className="component-line">
+          <span>
+            <span
+              onClick={this.makeComponentActive}
+              id="slow"
+              className={
+                "component-box " +
+                (this.state.selectedComponentId === "slow"
+                  ? "active"
+                  : "inactive")
+              }
+            >
+              Slow
+            </span>
+            <span
+              onClick={this.makeComponentActive}
+              id="fast"
+              className={
+                "component-box " +
+                (this.state.selectedComponentId === "fast"
+                  ? "active"
+                  : "inactive")
+              }
+            >
+              Fast
+            </span>
           </span>
-          <span
-            onClick={this.makeComponentActive}
-            id="fast"
-            className={
-              "component-box " +
-              (this.state.selectedComponentId === "fast"
-                ? "active"
-                : "inactive")
-            }
-          >
-            Fast
-          </span>
-        </span>
         </div>
-        <BugTable results={results} />
+        {this.state.selectedComponentId === "slow" ? (
+          <Slow />
+        ) : (
+          <div>PLACEHOLDER FOR FAST COMPONENT</div>
+        )}
       </div>
     );
   }
