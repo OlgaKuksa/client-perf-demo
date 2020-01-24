@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { updateFilter } from "../actiions/FilterActions";
 
 class Filter extends React.Component {
   constructor() {
@@ -9,7 +11,9 @@ class Filter extends React.Component {
   //TODO dispatch filtering on filter change after debounce e.g. 500ms
   //TODO - change filter value in state when redux gets connected
   onValueChange = e => {
-    this.setState({ value: e.target.value });
+    this.setState({ value: e.target.value }, () =>
+      this.props.updateFilter(this.state.value)
+    );
   };
 
   render() {
@@ -25,4 +29,6 @@ class Filter extends React.Component {
   }
 }
 
-export default Filter;
+const mapDispatchToProps = { updateFilter };
+
+export default connect(null, mapDispatchToProps)(Filter);

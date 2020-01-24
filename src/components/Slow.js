@@ -9,10 +9,27 @@ class Slow extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const filterValue = state.filterValue.trim();
-  const filteredResults = filterValue
-    ? state.results.filter(
-        it => it.title.includes(filterValue) || it.body.includes(filterValue)
+  const filterValues = state.filterValue
+    .split(" ")
+    .map(it => it.trim().toLowerCase())
+    .filter(Boolean);
+  const filteredResults = filterValues.length
+    ? state.results.filter(it =>
+        filterValues.every(
+          filterValue =>
+            it.title.toLowerCase().includes(filterValue) ||
+            it.body.toLowerCase().includes(filterValue) ||
+            it.number.toString().includes(filterValue) ||
+            it.user.login.toLowerCase().includes(filterValue) ||
+            it.state.toLowerCase().includes(filterValue) ||
+            new Date(it.created_at)
+              .toLocaleDateString("en-us", {
+                year: "numeric",
+                month: "numeric",
+                day: "numeric"
+              })
+              .includes(filterValue)
+        )
       )
     : state.results;
   return { filteredResults };

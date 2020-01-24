@@ -39,7 +39,7 @@ class BugTable extends React.Component {
           </tbody>
         </table>
       </div>
-    ) : <div class='big-message'>No bugs found</div>;
+    ) : <div className='big-message'>No bugs found</div>;
   }
 }
 

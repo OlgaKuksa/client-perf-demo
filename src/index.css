@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
 }
 
 code {
@@ -80,7 +81,7 @@ td {
   padding-top: 100px;
 }
 
-.count-message{
+.count-message {
   margin-left: 50px;
   font-size: large;
 }
