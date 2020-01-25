@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateFilter } from "../actiions/FilterActions";
+import { updateFilter } from "../actions/FilterActions";
 
 class Filter extends React.Component {
   constructor() {

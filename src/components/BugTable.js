@@ -5,12 +5,13 @@ class BugTable extends React.Component {
     const count = this.props.results.length;
     return count ? (
       <div>
-        <div className='count-message'>{count} bug(s) found</div>
+        <div className="count-message">{count} bug(s) found</div>
         <table>
           <thead>
             <tr>
               <th>Line</th>
               <th>Bug Number</th>
+              <th>Refs</th>
               <th>Title</th>
               <th>User</th>
               <th>State</th>
@@ -20,11 +21,14 @@ class BugTable extends React.Component {
           </thead>
           <tbody>
             {this.props.results.map((it, index) => (
-              <tr key={it.id}>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{it.number}</td>
+                <td>{it.refCount}</td>
                 <td>{it.title}</td>
-                <td>{it.user.login}</td>
+                <td>
+                  {it.user.login} ({it.user.issuesCount})
+                </td>
                 <td>{it.state}</td>
                 <td>{it.body}</td>
                 <td>
@@ -39,7 +43,9 @@ class BugTable extends React.Component {
           </tbody>
         </table>
       </div>
-    ) : <div className='big-message'>No bugs found</div>;
+    ) : (
+      <div className="big-message">No bugs found</div>
+    );
   }
 }
 

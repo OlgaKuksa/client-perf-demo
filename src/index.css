@@ -39,7 +39,6 @@ td {
 }
 
 .active {
-  color: green;
   border: 3px double;
 }
 
@@ -84,4 +83,12 @@ td {
 .count-message {
   margin-left: 50px;
   font-size: large;
+}
+
+.green-color {
+  color: green;
+}
+
+.red-color {
+  color: red;
 }

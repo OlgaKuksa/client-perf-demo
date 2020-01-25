@@ -13,14 +13,44 @@ const mapStateToProps = state => {
     .split(" ")
     .map(it => it.trim().toLowerCase())
     .filter(Boolean);
+
+  const CountByUsers = new Map();
+  
+  for (let result of state.results) {
+    CountByUsers.set(
+      result.user.id,
+      (CountByUsers.get(result.user.id) || 0) + 1
+    );
+  }
+
+  const calculatedResults = state.results.map(it => {
+    let count = 0;
+    for (let result of state.results) {
+      if (result.id === it.id) continue;
+      if (
+        result.body.includes("#" + it.number) ||
+        result.title.includes("#" + it.number)
+      )
+        count++;     
+    }
+    return {
+      ...it,
+      refCount: count,
+      user: { ...it.user, issuesCount: CountByUsers.get(it.user.id) }
+    };
+  });
+
   const filteredResults = filterValues.length
-    ? state.results.filter(it =>
+    ? calculatedResults.filter(it =>
         filterValues.every(
           filterValue =>
             it.title.toLowerCase().includes(filterValue) ||
             it.body.toLowerCase().includes(filterValue) ||
             it.number.toString().includes(filterValue) ||
-            it.user.login.toLowerCase().includes(filterValue) ||
+            it.refCount.toString().includes(filterValue) ||
+            (it.user.login + " (" + it.user.issuesCount + ")")
+              .toLowerCase()
+              .includes(filterValue) ||
             it.state.toLowerCase().includes(filterValue) ||
             new Date(it.created_at)
               .toLocaleDateString("en-us", {
@@ -31,7 +61,8 @@ const mapStateToProps = state => {
               .includes(filterValue)
         )
       )
-    : state.results;
+    : calculatedResults;
+
   return { filteredResults };
 };
 

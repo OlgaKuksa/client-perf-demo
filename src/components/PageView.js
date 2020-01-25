@@ -2,6 +2,9 @@ import React from "react";
 import SourceSelector from "./SourceSelector";
 import Filter from "./Filter";
 import Slow from "./Slow";
+import SchemeChanger from "./SchemeChanger";
+
+import { connect } from "react-redux";
 
 class PageView extends React.Component {
   constructor() {
@@ -18,6 +21,7 @@ class PageView extends React.Component {
       <div>
         <div className="filter-box">
           <Filter />
+          <SchemeChanger />
           <SourceSelector />
         </div>
         <div className="component-line">
@@ -28,8 +32,8 @@ class PageView extends React.Component {
               className={
                 "component-box " +
                 (this.state.selectedComponentId === "slow"
-                  ? "active"
-                  : "inactive")
+                  ? "active " + (this.props.activeColorScheme + "-color")
+                  : "inactive ")
               }
             >
               Slow
@@ -40,8 +44,8 @@ class PageView extends React.Component {
               className={
                 "component-box " +
                 (this.state.selectedComponentId === "fast"
-                  ? "active"
-                  : "inactive")
+                  ? "active " + (this.props.activeColorScheme + "-color")
+                  : "inactive ")
               }
             >
               Fast
@@ -58,4 +62,8 @@ class PageView extends React.Component {
   }
 }
 
-export default PageView;
+const mapStateToProps = state => ({
+  activeColorScheme: state.activeColorScheme
+});
+
+export default connect(mapStateToProps, null)(PageView);
