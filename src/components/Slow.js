@@ -31,7 +31,7 @@ const mapStateToProps = state => {
         result.body.includes("#" + it.number) ||
         result.title.includes("#" + it.number)
       )
-        count++;     
+        count++;
     }
     return {
       ...it,

@@ -2,6 +2,8 @@ import React from "react";
 import SourceSelector from "./SourceSelector";
 import Filter from "./Filter";
 import Slow from "./Slow";
+import Fast from "./Fast";
+import Broken from "./Broken";
 import SchemeChanger from "./SchemeChanger";
 
 import { connect } from "react-redux";
@@ -14,6 +16,19 @@ class PageView extends React.Component {
 
   makeComponentActive = e => {
     this.setState({ selectedComponentId: e.target.id });
+  };
+
+  renderSelectedComponent = () => {
+    switch (this.state.selectedComponentId) {
+      case "slow":
+        return <Slow />;
+      case "fast":
+        return <Fast />;
+      case "broken":
+        return <Broken />;
+      default:
+        return null;
+    }
   };
 
   render() {
@@ -50,13 +65,21 @@ class PageView extends React.Component {
             >
               Fast
             </span>
+            <span
+              onClick={this.makeComponentActive}
+              id="broken"
+              className={
+                "component-box " +
+                (this.state.selectedComponentId === "broken"
+                  ? "active " + (this.props.activeColorScheme + "-color")
+                  : "inactive ")
+              }
+            >
+              Broken
+            </span>
           </span>
         </div>
-        {this.state.selectedComponentId === "slow" ? (
-          <Slow />
-        ) : (
-          <div>PLACEHOLDER FOR FAST COMPONENT</div>
-        )}
+        {this.renderSelectedComponent()}
       </div>
     );
   }
