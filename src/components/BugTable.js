@@ -21,7 +21,7 @@ class BugTable extends React.Component {
           </thead>
           <tbody>
             {this.props.results.map((it, index) => (
-              <tr key={index}>
+              <tr key={it.id}>
                 <td>{index + 1}</td>
                 <td>{it.number}</td>
                 <td>{it.refCount}</td>

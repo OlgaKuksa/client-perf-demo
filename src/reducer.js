@@ -5,7 +5,7 @@ import { UPDATE_COLOR_SCHEME } from "./actions/SchemeChangerActions";
 
 const initialState = {
   filterValue: "",
-  results: [...localResults, ...localResults, ...localResults, ...localResults],
+  results: localResults,
   activeColorScheme: "green"
 };
 
