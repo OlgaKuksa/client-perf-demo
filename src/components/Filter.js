@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateFilter } from "../actions/FilterActions";
+import debounce from "lodash.debounce";
 
 class Filter extends React.Component {
   constructor() {
@@ -8,12 +9,12 @@ class Filter extends React.Component {
     this.state = { value: "" };
   }
 
-  //TODO dispatch filtering on filter change after debounce e.g. 500ms
-  //TODO - change filter value in state when redux gets connected
+  updateFilterInAppState = debounce(() => {
+    this.props.updateFilter(this.state.value);
+  }, 250);
+
   onValueChange = e => {
-    this.setState({ value: e.target.value }, () =>
-      this.props.updateFilter(this.state.value)
-    );
+    this.setState({ value: e.target.value }, this.updateFilterInAppState);
   };
 
   render() {
