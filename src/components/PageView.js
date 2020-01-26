@@ -1,5 +1,4 @@
 import React from "react";
-import SourceSelector from "./SourceSelector";
 import Filter from "./Filter";
 import Slow from "./Slow";
 import Fast from "./Fast";
@@ -37,7 +36,6 @@ class PageView extends React.Component {
         <div className="filter-box">
           <Filter />
           <SchemeChanger />
-          <SourceSelector />
         </div>
         <div className="component-line">
           <span>
