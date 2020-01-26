@@ -4,6 +4,8 @@ import Slow from "./Slow";
 import Fast from "./Fast";
 import Broken from "./Broken";
 import SchemeChanger from "./SchemeChanger";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlaneDeparture, faCarCrash, faTemperatureLow, faFlushed, faBlind, faSadCry, faSadTear, faShoePrints } from "@fortawesome/free-solid-svg-icons";
 
 import { connect } from "react-redux";
 
@@ -13,8 +15,8 @@ class PageView extends React.Component {
     this.state = { selectedComponentId: "fast" };
   }
 
-  makeComponentActive = e => {
-    this.setState({ selectedComponentId: e.target.id });
+  makeComponentActive = id => () => {
+    this.setState({ selectedComponentId: id });
   };
 
   renderSelectedComponent = () => {
@@ -40,7 +42,7 @@ class PageView extends React.Component {
         <div className="component-line">
           <span>
             <span
-              onClick={this.makeComponentActive}
+              onClick={this.makeComponentActive("slow")}
               id="slow"
               className={
                 "component-box " +
@@ -49,10 +51,10 @@ class PageView extends React.Component {
                   : "inactive ")
               }
             >
-              Slow
+              Slow <FontAwesomeIcon icon={faShoePrints} />
             </span>
             <span
-              onClick={this.makeComponentActive}
+              onClick={this.makeComponentActive("fast")}
               id="fast"
               className={
                 "component-box " +
@@ -61,10 +63,10 @@ class PageView extends React.Component {
                   : "inactive ")
               }
             >
-              Fast
+              Fast <FontAwesomeIcon icon={faPlaneDeparture} />
             </span>
             <span
-              onClick={this.makeComponentActive}
+              onClick={this.makeComponentActive("broken")}
               id="broken"
               className={
                 "component-box " +
@@ -73,7 +75,7 @@ class PageView extends React.Component {
                   : "inactive ")
               }
             >
-              Broken
+              Broken <FontAwesomeIcon icon={faCarCrash} />
             </span>
           </span>
         </div>

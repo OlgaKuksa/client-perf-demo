@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-y: scroll;
+  width: 100%;
 }
 
 code {
@@ -22,11 +22,15 @@ td {
 
 table {
   margin: 30px;
+  width: calc(100%-60px);
+  table-layout: auto;
 }
 
 th,
 td {
   padding: 5px;
+  overflow: hidden;
+  max-width: 900px;
 }
 
 .component-box {
