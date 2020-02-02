@@ -5,14 +5,20 @@ import Fast from "./Fast";
 import Broken from "./Broken";
 import SchemeChanger from "./SchemeChanger";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlaneDeparture, faCarCrash, faShoePrints } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlaneDeparture,
+  faCarCrash,
+  faShoePrints
+} from "@fortawesome/free-solid-svg-icons";
 
 import { connect } from "react-redux";
 
 class PageView extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
-    this.state = { selectedComponentId: "fast" };
+    this.state = {
+      selectedComponentId: props.initialSelectedComponentId || "fast"
+    };
   }
 
   makeComponentActive = id => () => {
