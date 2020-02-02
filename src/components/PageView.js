@@ -5,7 +5,7 @@ import Fast from "./Fast";
 import Broken from "./Broken";
 import SchemeChanger from "./SchemeChanger";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlaneDeparture, faCarCrash, faTemperatureLow, faFlushed, faBlind, faSadCry, faSadTear, faShoePrints } from "@fortawesome/free-solid-svg-icons";
+import { faPlaneDeparture, faCarCrash, faShoePrints } from "@fortawesome/free-solid-svg-icons";
 
 import { connect } from "react-redux";
 

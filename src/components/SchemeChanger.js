@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateColorScheme } from "../actions/SchemeChangerActions";
+import SchemeInput from "./SchemeInput";
 
 class SchemeChanger extends React.Component {
   constructor(props) {
@@ -19,24 +20,20 @@ class SchemeChanger extends React.Component {
   render() {
     return (
       <span>
-        <input
-          type="radio"
+        <SchemeInput
           id="green"
-          value="green"
-          name="color-scheme"
           checked={this.state.activeScheme === "green"}
+          value="green"
+          displayName="Green"
           onChange={this.onChangeColorScheme}
-        ></input>
-        <label htmlFor="green">Green</label>
-        <input
-          type="radio"
+        />
+        <SchemeInput
           id="red"
-          value="red"
-          name="color-scheme"
           checked={this.state.activeScheme === "red"}
+          value="red"
+          displayName="Red"
           onChange={this.onChangeColorScheme}
-        ></input>
-        <label htmlFor="red">Red</label>
+        />
       </span>
     );
   }
