@@ -2,7 +2,7 @@ import React from "react";
 import PageView from "./components/PageView";
 
 function App() {
-  return <PageView initialSelectedComponentId="fast" />;
+  return <PageView />;
 }
 
 export default App;

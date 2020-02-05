@@ -4,7 +4,7 @@ import Slow from "./Slow";
 import Fast from "./Fast";
 import Broken from "./Broken";
 import SchemeChanger from "./SchemeChanger";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ComponentMenuItem from "./ComponentMenuItem";
 import {
   faPlaneDeparture,
   faCarCrash,
@@ -38,6 +38,14 @@ class PageView extends React.Component {
     }
   };
 
+  getClassName = id => {
+    const colorClassName =
+      this.state.selectedComponentId === id
+        ? "active " + (this.props.activeColorScheme + "-color")
+        : "inactive ";
+    return "component-box " + colorClassName;
+  };
+
   render() {
     return (
       <div>
@@ -47,42 +55,27 @@ class PageView extends React.Component {
         </div>
         <div className="component-line">
           <span>
-            <span
+            <ComponentMenuItem
               onClick={this.makeComponentActive("slow")}
               id="slow"
-              className={
-                "component-box " +
-                (this.state.selectedComponentId === "slow"
-                  ? "active " + (this.props.activeColorScheme + "-color")
-                  : "inactive ")
-              }
-            >
-              Slow <FontAwesomeIcon icon={faShoePrints} />
-            </span>
-            <span
+              icon={faShoePrints}
+              displayName="Slow"
+              className={this.getClassName("slow")}
+            />
+            <ComponentMenuItem
               onClick={this.makeComponentActive("fast")}
               id="fast"
-              className={
-                "component-box " +
-                (this.state.selectedComponentId === "fast"
-                  ? "active " + (this.props.activeColorScheme + "-color")
-                  : "inactive ")
-              }
-            >
-              Fast <FontAwesomeIcon icon={faPlaneDeparture} />
-            </span>
-            <span
+              icon={faPlaneDeparture}
+              displayName="Fast"
+              className={this.getClassName("fast")}
+            />
+            <ComponentMenuItem
               onClick={this.makeComponentActive("broken")}
               id="broken"
-              className={
-                "component-box " +
-                (this.state.selectedComponentId === "broken"
-                  ? "active " + (this.props.activeColorScheme + "-color")
-                  : "inactive ")
-              }
-            >
-              Broken <FontAwesomeIcon icon={faCarCrash} />
-            </span>
+              icon={faCarCrash}
+              displayName="Broken"
+              className={this.getClassName("broken")}
+            />
           </span>
         </div>
         {this.renderSelectedComponent()}
