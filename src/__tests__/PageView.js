@@ -43,11 +43,10 @@ describe("change color scheme tests", () => {
         .filterWhere(it => it.prop("id") === id)
         .hasClass("red-color")
     ).toBe(true);
+    
+
     console.log(
-      "Switching color took " +
-        (endTime - startTime).toPrecision(5) +
-        "ms for " +
-        id
+      `Switching color took \x1b[32m${(endTime - startTime).toPrecision(5)} ms\x1b[0m for \x1b[32m${id.toUpperCase()}\x1b[0m`
     );
   };
 
