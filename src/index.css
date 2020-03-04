@@ -26,11 +26,19 @@ table {
   table-layout: auto;
 }
 
+thead{
+  font-size: 24px
+}
+
+tbody{
+  font-size: 23px
+}
+
 th,
 td {
   padding: 5px;
   overflow: hidden;
-  max-width: 900px;
+  max-width: 600px;
 }
 
 .component-box {
@@ -86,7 +94,7 @@ td {
 
 .count-message {
   margin-left: 50px;
-  font-size: large;
+  font-size: 24px;
 }
 
 .green-color {
@@ -96,3 +104,17 @@ td {
 .red-color {
   color: red;
 }
+
+.scheme-input {
+  font-size: 28px;
+  padding: 5px 5px;
+  margin-right: 20px;
+  
+}
+
+.input-radio{
+  border: 0px;
+  width: 2em; 
+  height: 2em;
+}
+

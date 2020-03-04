@@ -4,15 +4,15 @@ class SchemeInput extends React.Component {
   render() {
     return (
       <span>
-        <input
+        <input className="input-radio"
           type="radio"
-          id={this.props.id}
           value={this.props.value}
+          id={this.props.value}
           name="color-scheme"
           checked={this.props.checked}
           onChange={this.props.onChange}
         ></input>
-        <label htmlFor={this.props.id}>{this.props.displayName}</label>
+        <label className="scheme-input" htmlFor={this.props.value}>{this.props.displayName}</label>
       </span>
     );
   }

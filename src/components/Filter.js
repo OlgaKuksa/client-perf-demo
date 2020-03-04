@@ -4,9 +4,9 @@ import { updateFilter } from "../actions/FilterActions";
 import debounce from "lodash.debounce";
 
 class Filter extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
-    this.state = { value: "" };
+    this.state = { value: props.filterValue || "" };
   }
 
   updateFilterInAppState = debounce(() => {
@@ -30,6 +30,9 @@ class Filter extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  filterValue: state.filterValue
+});
 const mapDispatchToProps = { updateFilter };
 
-export default connect(null, mapDispatchToProps)(Filter);
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

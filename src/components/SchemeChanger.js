@@ -12,8 +12,8 @@ class SchemeChanger extends React.Component {
   }
 
   onChangeColorScheme = e => {
-    this.setState({ activeScheme: e.target.value }, () =>
-      this.props.updateColorScheme(this.state.activeScheme)
+    this.setState({ activeScheme: e.target.value }, 
+      () =>this.props.updateColorScheme(this.state.activeScheme)
     );
   };
 
@@ -21,14 +21,12 @@ class SchemeChanger extends React.Component {
     return (
       <span>
         <SchemeInput
-          id="green"
           checked={this.state.activeScheme === "green"}
           value="green"
           displayName="Green"
           onChange={this.onChangeColorScheme}
         />
         <SchemeInput
-          id="red"
           checked={this.state.activeScheme === "red"}
           value="red"
           displayName="Red"
